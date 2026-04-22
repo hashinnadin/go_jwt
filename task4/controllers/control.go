@@ -94,7 +94,7 @@ func GetUser(c *gin.Context) {
 		return
 	}
 	var users []models.User
-	if err := database.DB.Select("id,name,emai,role").Find(&users).Error; err != nil {
+	if err := database.DB.Select("id,name,email,role").Find(&users).Error; err != nil {
 		c.JSON(500, gin.H{"error": "failed to fetch users"})
 		return
 	}

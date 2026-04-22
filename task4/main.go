@@ -21,7 +21,10 @@ func main() {
 	r := gin.Default()
 
 	r.POST("/api/register", controllers.Register)
-	r.POST("/api/login", controllers.Login)
+	r.GET("/test", func(c *gin.Context) {
+		c.JSON(200, gin.H{"status": "ok"})
+	})
+	r.POST("/login", controllers.Login)
 	protected := r.Group("/api")
 	protected.Use(middleware.Middleware())
 	protected.GET("/dashboard", controllers.Dashboard)
