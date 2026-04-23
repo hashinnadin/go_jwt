@@ -11,6 +11,7 @@ import (
 func Middleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		authHeader := c.GetHeader("Authorization")
+
 		if authHeader == "" {
 			c.JSON(401, gin.H{"error": "missing token"})
 			c.Abort()
@@ -51,9 +52,8 @@ func Middleware() gin.HandlerFunc {
 		// 2. role check
 		role, ok := claims["role"].(string)
 		if !ok {
-			role = "user" // Default role set cheyyunnu
+			role = "user"
 		}
-
 		c.Set("user_id", uint(uid))
 		c.Set("role", role)
 		c.Next()

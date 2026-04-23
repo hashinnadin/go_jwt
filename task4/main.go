@@ -20,7 +20,7 @@ func main() {
 
 	r := gin.Default()
 
-	r.POST("/api/register", controllers.Register)
+	r.POST("/register", controllers.Register)
 	r.GET("/test", func(c *gin.Context) {
 		c.JSON(200, gin.H{"status": "ok"})
 	})
@@ -31,4 +31,5 @@ func main() {
 	protected.GET("/users", controllers.GetUser)
 	protected.POST("/logout", controllers.Logout)
 	r.Run(":8080")
+
 }
