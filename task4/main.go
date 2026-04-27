@@ -17,7 +17,6 @@ func main() {
 	}
 
 	database.ConnectDB()
-
 	r := gin.Default()
 
 	r.POST("/register", controllers.Register)
